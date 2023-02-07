@@ -26,7 +26,9 @@ public class AppConfig {
     }
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(MemberRepository(), discountPolicy());
+
+        //return new OrderServiceImpl(MemberRepository(), discountPolicy());
+        return null;
     }
     @Bean
     public DiscountPolicy discountPolicy() { return new RateDiscountPolicy();
