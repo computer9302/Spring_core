@@ -1,5 +1,6 @@
 package hello.example.core.order;
 
+import hello.example.core.MainDiscountPolicy;
 import hello.example.core.discount.DiscountPolicy;
 import hello.example.core.discount.FixDiscountPolicy;
 import hello.example.core.member.Member;
@@ -8,6 +9,7 @@ import hello.example.core.member.MemberService;
 import hello.example.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +20,7 @@ public class OrderServiceImpl implements OrderService{
      private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
